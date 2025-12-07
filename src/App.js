@@ -1,20 +1,19 @@
-import {SplitScreen} from "./components/split-screen";
-
-const LeftSideComp = ({title}) => {
-  return <h2 style={{backgroundColor: "crimson"}}>{title}</h2>;
-};
-
-const RightSideComp = ({title}) => {
-  return <h2 style={{backgroundColor: "greenyellow"}}>{title}</h2>;
-};
+import {SmallAuthorListItem} from "./components/authors/SmallListItems";
+import {LargeAuthorListItem} from "./components/authors/LargeListItems";
+import {LargeBookListItem} from "./components/books/LargeListItems";
+import {SmallBookListItem} from "./components/books/SmallListItems";
+import {RegularList} from "./components/lists/Regular";
+import authors from "./data/authors";
+import books from "./data/books";
+import {NumberedList} from "./components/lists/Numbered";
 
 function App() {
   return (
     <>
-      <SplitScreen leftWidth={1} rightWidth={3}>
-        <LeftSideComp title={"Left"} />
-        <RightSideComp title={"Right"} />
-      </SplitScreen>
+      <RegularList items={authors} sourceName={"author"} ItemComponent={SmallAuthorListItem} />
+      <NumberedList items={authors} sourceName={"author"} ItemComponent={LargeAuthorListItem} />
+      <RegularList items={books} sourceName={"book"} ItemComponent={SmallBookListItem} />
+      <NumberedList items={books} sourceName={"book"} ItemComponent={LargeBookListItem} />
     </>
   );
 }
