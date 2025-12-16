@@ -36,24 +36,28 @@ let users = [
 
 let books = [
   {
+    id: "1",
     name: "To Kill a Mockingbird",
     pages: 289,
     title: "Harper Lee",
     price: 12.99,
   },
   {
+    id: "2",
     name: "The Catcher in the Rye",
     pages: 225,
     title: "J. D. Salinger",
     price: 19.99,
   },
   {
+    id: "3",
     name: "The Little Prince",
     pages: 89,
     title: "Antoine de Saint-Exupery",
     price: 12.99,
   },
   {
+    id: "4",
     name: "Sing a Sad Song",
     pages: 332,
     title: "Steven Smith",
@@ -81,6 +85,7 @@ app.post("/users/:id", (req, res) => {
 app.get("/books", (req, res) => res.json(books));
 app.get("/books/:id", (req, res) => {
   const {id} = req.params;
+
   res.json(books.find(book => book.id === id));
 });
 
