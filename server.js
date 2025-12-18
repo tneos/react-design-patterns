@@ -69,7 +69,7 @@ let books = [
 app.get("/current-user", (req, res) => res.json(currentUser));
 app.get("/users/:id", (req, res) => {
   const {id} = req.params;
-  console.log(id);
+  console.log("Id is:", id);
   res.json(users.find(user => user.id === id));
 });
 app.get("/users", (req, res) => res.json(users));
