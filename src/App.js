@@ -14,11 +14,37 @@ const getDataFromServer = async url => {
   return response.data;
 };
 
+// Retrieve data from local storage(key as argument)
+const getDataFromLocalStorage = key => {
+  return localStorage.getItem(key);
+};
+
+const Message = ({msg}) => {
+  console.log(msg);
+  const msgObj = JSON.parse(msg);
+  const {email, lastName, location, name} = msgObj;
+
+  return (
+    <>
+      <h1>User details</h1>
+      <ul>
+        <li>{email}</li>
+        <li>{lastName}</li>
+        <li>{location}</li>
+        <li>{name}</li>
+      </ul>
+    </>
+  );
+};
+
 function App() {
   return (
     <>
-      <DataSource getData={() => getDataFromServer("/users/2")} resourceName={"user"}>
+      <DataSource getData={() => getDataFromServer("users/2")} resourceName={"user"}>
         <UserInfo />
+      </DataSource>
+      <DataSource getData={() => getDataFromLocalStorage("user")} resourceName={"msg"}>
+        <Message />
       </DataSource>
     </>
   );
